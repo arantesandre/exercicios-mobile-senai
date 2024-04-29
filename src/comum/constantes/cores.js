@@ -13,7 +13,7 @@ const CORES = {
     BRANCA: '#fff',
 
     CINZA: '#99a7bb',
-
+    
 };
 
 export default CORES;
