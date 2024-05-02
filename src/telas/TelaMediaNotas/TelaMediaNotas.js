@@ -39,7 +39,7 @@ const TelaMediaNotas = () => {
 
   const calculoMediaNotas = () => {
     const pesoNotaSA = campoNotaSA * 2;
-    const mediaNotas = (+campoAv1 + +campoAv2 + +pesoNotaSA) / 3;
+    const mediaNotas = (+campoAv1 + +campoAv2 + +pesoNotaSA) / 4;
 
     if (isNaN(campoAv1) || isNaN(campoAv2) || isNaN(campoNotaSA)) {
       alert("Apenas números são aceitos");
