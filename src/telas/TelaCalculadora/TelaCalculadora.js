@@ -1,15 +1,14 @@
 import React from "react";
 import { Pressable, StyleSheet, View, Text, Keyboard } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
 
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+
+import CORES from "../../comum/constantes/cores";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-import CORES from "../../comum/constantes/cores";
-
 import RNPickerSelect from "react-native-picker-select";
-
-// import pickerSelectStyles from "../../comum/constantes/pickerSelectStyles";
+import pickerSelectStyles from "../../comum/constantes/pickerSelectStyles";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,18 +53,22 @@ const TelaCalculadora = () => {
         break;
 
       default:
-        setResultoperacao("Selecione uma Operação");
+        // setResultoperacao("Selecione uma Operação");
         break;
     }
+    if (isNaN(resultOp)) {
+      setResultoperacao("Error");
+    } else {
+      setResultoperacao(resultOp);
+    }
 
-    setResultoperacao(resultOp);
     Keyboard.dismiss();
   };
 
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="calculator" size={48} color="purple" />
+        <FontAwesome5 name="calculator" size={56} color="purple" />
       </View>
 
       <CampoTextoCustomizado
@@ -77,6 +80,7 @@ const TelaCalculadora = () => {
 
       {/* inserir select aqui */}
       <RNPickerSelect
+        style={pickerSelectStyles}
         onValueChange={setCampoOperacao}
         value={campoOperacao}
         items={[

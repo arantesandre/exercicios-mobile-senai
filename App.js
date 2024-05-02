@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import TELAS from './src/comum/constantes/telas';
 // import CORES from './src/comum/constantes/cores';
 
-//importando rotas
+//importando navegacao
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 

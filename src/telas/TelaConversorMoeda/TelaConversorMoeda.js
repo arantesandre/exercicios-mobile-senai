@@ -19,7 +19,10 @@ const TelaConversorMoeda = () => {
   const cambioRealDolarEuro = (campoReal) => {
     setCampoReal(campoReal);
 
-    if (campoReal !== "") {
+    if (isNaN(campoReal)) {
+      alert("Insira um valor válido");
+      setCampoReal("");
+    } else if (campoReal !== "") {
       setCampoDolar((parseFloat(campoReal) / valorDolar).toFixed(2).toString());
       setCampoEuro((parseFloat(campoReal) / valorEuro).toFixed(2).toString());
     } else {
@@ -32,7 +35,10 @@ const TelaConversorMoeda = () => {
   const cambioDolarEuroReal = (campoDolar) => {
     setCampoDolar(campoDolar);
 
-    if (campoDolar !== "") {
+    if (isNaN(campoDolar)) {
+      alert("Insira um valor válido");
+      setCampoDolar("");
+    } else if (campoDolar !== "") {
       setCampoReal((parseFloat(campoDolar) * valorDolar).toFixed(2).toString());
       setCampoEuro((parseFloat(campoDolar) * 0.93).toFixed(2).toString());
     } else {
@@ -45,7 +51,10 @@ const TelaConversorMoeda = () => {
   const cambioEuroRealDolar = (campoEuro) => {
     setCampoEuro(campoEuro);
 
-    if (campoEuro !== "" || isNaN(campoEuro)) {
+    if (isNaN(campoEuro)) {
+      alert("Insira um valor válido");
+      setCampoEuro("");
+    } else if (campoEuro !== "") {
       setCampoReal((parseFloat(campoEuro) * valorEuro).toFixed(2).toString());
       setCampoDolar((parseFloat(campoEuro) * 1.07).toFixed(2).toString());
     } else {
@@ -57,7 +66,7 @@ const TelaConversorMoeda = () => {
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome name="money" size={48} color="blue" />
+        <FontAwesome name="money" size={56} color="blue" />
       </View>
 
       <CampoTextoCustomizado

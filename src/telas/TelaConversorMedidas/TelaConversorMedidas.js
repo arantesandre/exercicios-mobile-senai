@@ -16,31 +16,55 @@ const TelaConversorMedidas = () => {
   //CM -> METRO -> KM
   const convertCmMtKm = (campoCentimetro) => {
     setCampoCentimetro(campoCentimetro);
-    setCampoMetro((campoCentimetro / 100).toString());
-    setCampoQuilometro((campoCentimetro / 100000).toString());
-    console.log(campoCentimetro);
+
+    if (isNaN(campoCentimetro)) {
+      alert("Insira um valor válido");
+      setCampoCentimetro("");
+    } else if (campoCentimetro !== "") {
+      setCampoMetro((campoCentimetro / 100).toString());
+      setCampoQuilometro((campoCentimetro / 100000).toString());
+    } else {
+      setCampoMetro("");
+      setCampoQuilometro("");
+    }
   };
 
   //METRO -> KM -> CM
   const convertMtKmCm = (campoMetro) => {
     setCampoMetro(campoMetro);
-    setCampoQuilometro((campoMetro / 1000).toString());
-    setCampoCentimetro((campoMetro * 100).toString());
-    console.log(campoMetro);
+
+    if (isNaN(campoMetro)) {
+      alert("Insira um valor válido");
+      setCampoMetro("");
+    } else if (campoMetro !== "") {
+      setCampoQuilometro((campoMetro / 1000).toString());
+      setCampoCentimetro((campoMetro * 100).toString());
+    } else {
+      setCampoQuilometro("");
+      setCampoCentimetro("");
+    }
   };
 
   //KM -> CM -> METRO
   const convertKmCmMt = (campoQuilometro) => {
     setCampoQuilometro(campoQuilometro);
-    setCampoCentimetro((campoQuilometro * 100000).toString());
-    setCampoMetro((campoQuilometro * 1000).toString());
-    console.log(campoQuilometro);
+
+    if (isNaN(campoQuilometro)) {
+      alert("Insira um valor válido");
+      setCampoQuilometro("");
+    } else if (campoQuilometro !== "") {
+      setCampoCentimetro((campoQuilometro * 100000).toString());
+      setCampoMetro((campoQuilometro * 1000).toString());
+    } else {
+      setCampoCentimetro("");
+      setCampoMetro("");
+    }
   };
 
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="ruler" size={48} color="green" />
+        <FontAwesome5 name="ruler" size={56} color="green" />
       </View>
 
       <CampoTextoCustomizado

@@ -41,20 +41,27 @@ const TelaMediaNotas = () => {
     const pesoNotaSA = campoNotaSA * 2;
     const mediaNotas = (+campoAv1 + +campoAv2 + +pesoNotaSA) / 3;
 
-    if (mediaNotas >= 7) {
-      setStatus("(APROVADO)");
+    if (isNaN(campoAv1) || isNaN(campoAv2) || isNaN(campoNotaSA)) {
+      alert("Apenas números são aceitos");
+    } else if (campoAv1 < 0 || campoAv2 < 0 || campoNotaSA < 0) {
+      alert("Números negativos não são aceitos");
     } else {
-      setStatus("(REPROVADO)");
+      if (mediaNotas >= 7) {
+        setStatus("(APROVADO)");
+      } else {
+        setStatus("(REPROVADO)");
+      }
+
+      setResultadoMedia(mediaNotas.toFixed(2));
     }
 
-    setResultadoMedia(mediaNotas.toFixed(2));
     Keyboard.dismiss();
   };
 
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <Ionicons name="document-text-outline" size={48} color="yellow" />
+        <Ionicons name="document-text-outline" size={56} color="yellow" />
       </View>
 
       <CampoTextoCustomizado

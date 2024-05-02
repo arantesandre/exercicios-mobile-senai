@@ -1,16 +1,8 @@
-import {
-  Keyboard,
-  Pressable,
-  StyleSheet,
-  Switch,
-  Text,
-  View,
-} from "react-native";
-
+import React from "react";
+import { Keyboard, Pressable, StyleSheet, Switch, Text, View, } from "react-native";
 import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
 import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
 import CORES from "../../comum/constantes/cores";
-import React from "react";
 
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -37,32 +29,6 @@ const TelaReajusteSalarial = () => {
   const [campoSalario, setCampoSalario] = React.useState("");
   const [campoCargoConfianca, setCampoCargoConfianca] = React.useState(false);
   const [novoSalario, setNovoSalario] = React.useState("");
-  //   console.log(campoSalario);
-
-  //CALCULO
-  //   const calculoReajuste = () => {
-  //     let reajuste;
-
-  //     if (campoSalario <= 2000 && campoCargoConfianca === true) {
-  //       reajuste = campoSalario * 0.08;
-  //       setNovoSalario(parseFloat(campoSalario) + reajuste);
-  //     } else if (
-  //       campoSalario > 2000 && campoSalario <= 3000 && campoCargoConfianca === true) {
-  //       reajuste = campoSalario * 0.07;
-  //       setNovoSalario(parseFloat(campoSalario) + reajuste);
-  //     } else if (
-  //       campoSalario > 3000 && campoSalario <= 4000 && campoCargoConfianca === true) {
-  //       reajuste = campoSalario * 0.06;
-  //       setNovoSalario(parseFloat(campoSalario) + reajuste);
-  //     } else if (campoSalario >= 5000 && campoCargoConfianca === true) {
-  //       reajuste = campoSalario * 0.05;
-  //       setNovoSalario(parseFloat(campoSalario) + reajuste);
-  //     } else {
-  //       setNovoSalario(campoSalario);
-  //     }
-
-  //     Keyboard.dismiss();
-  //   };
 
   const calculoReajuste = () => {
     let reajuste;
@@ -104,7 +70,7 @@ const TelaReajusteSalarial = () => {
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome name="money" size={48} color="orange" />
+        <FontAwesome name="money" size={56} color="orange" />
       </View>
 
       <CampoTextoCustomizado

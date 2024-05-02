@@ -30,12 +30,12 @@ const TelaMediaConsumoVeiculo = () => {
 
   //CALCULO
   const calcularConsumo = () => {
-    const resultadoConsumo = campoDistancia / campoQuantCombustivel;
+    const resultadoConsumo = parseFloat(campoDistancia) / parseFloat(campoQuantCombustivel);
 
     if (campoDistancia == "" || campoQuantCombustivel == "") {
       alert("Preencha todos os campos antes de prosseguir.");
-
-      campoDistancia.curre;
+    } else if (isNaN(campoDistancia) || isNaN(campoQuantCombustivel)) {
+      alert("Forneça apenas números");
     } else if (campoDistancia <= 0 || campoQuantCombustivel <= 0) {
       alert("Forneça valores maiores do que zero.");
     } else {
@@ -49,7 +49,7 @@ const TelaMediaConsumoVeiculo = () => {
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="car" size={48} color="red" />
+        <FontAwesome5 name="car" size={56} color="red" />
       </View>
 
       <CampoTextoCustomizado
@@ -72,7 +72,7 @@ const TelaMediaConsumoVeiculo = () => {
 
       <View style={{ marginTop: 16 }}>
         <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16}}>
+        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
           {campoResultado}
         </Text>
       </View>

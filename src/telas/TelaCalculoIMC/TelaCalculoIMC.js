@@ -33,34 +33,38 @@ const TelaCalculoIMC = () => {
 
   const cacularIMC = () => {
     //peso / altura * altura
-    let calculoImc = campoPeso / (campoAltura * campoAltura);
+    let calculoImc = +campoPeso / (+campoAltura * +campoAltura);
     calculoImc = calculoImc.toFixed(2);
 
     let status;
 
-    if (calculoImc < 18.5) {
-      status = "Abaixo do peso";
-    } else if (calculoImc >= 18.5 && calculoImc <= 24.9) {
-      status = "Peso normal";
-    } else if (calculoImc >= 25 && calculoImc <= 29.99) {
-      status = "Sobrepeso";
-    } else if (calculoImc >= 30 && calculoImc <= 34.99) {
-      status = "Obesidade Grau I";
-    } else if (calculoImc >= 35 && calculoImc <= 39.99) {
-      status = "Obesidade Grau II (severa)";
-    } else if (calculoImc >= 40) {
-      status = "Obesidade Grau III (mórbida)";
+    if (isNaN(campoAltura) || isNaN(campoPeso) || campoAltura <= 0 || campoPeso <= 0) {
+      alert("Ops! \n\n -> Verifique se os campos contém valores válidos \n\n -> Forneça valores acima de zero");
+    }else {
+      if (calculoImc < 18.5) {
+        status = "Abaixo do peso";
+      } else if (calculoImc >= 18.5 && calculoImc <= 24.9) {
+        status = "Peso normal";
+      } else if (calculoImc >= 25 && calculoImc <= 29.99) {
+        status = "Sobrepeso";
+      } else if (calculoImc >= 30 && calculoImc <= 34.99) {
+        status = "Obesidade Grau I";
+      } else if (calculoImc >= 35 && calculoImc <= 39.99) {
+        status = "Obesidade Grau II (severa)";
+      } else if (calculoImc >= 40) {
+        status = "Obesidade Grau III (mórbida)";
+      }
+
+      setImc(`${calculoImc} - ${status}`);
     }
-    setImc(`${calculoImc} - ${status}`);
-    // setImc(calculoImc.toFixed(2));
+
     Keyboard.dismiss();
-    // console.log(calculoImc);
   };
 
   return (
     <View style={telasContainerStyle.container}>
       <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="balance-scale" size={48} color="gray" />
+        <FontAwesome5 name="balance-scale" size={56} color="gray" />
       </View>
 
       <CampoTextoCustomizado
@@ -82,7 +86,7 @@ const TelaCalculoIMC = () => {
 
       <View style={{ marginTop: 16 }}>
         <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 8 }}>
+        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
           {imc}
         </Text>
       </View>
