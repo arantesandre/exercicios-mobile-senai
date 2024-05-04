@@ -1,29 +1,12 @@
 import React from "react";
-import { Keyboard, Pressable, StyleSheet, Switch, Text, View, } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-import CORES from "../../comum/constantes/cores";
-
+import { Keyboard, Pressable, Switch, Text, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
 
-const styles = StyleSheet.create({
-  botao: {
-    backgroundColor: "orange",
-    justifyContent: "center",
-    height: 48,
-    borderBottomLeftRadius: 48,
-    borderTopRightRadius: 48,
-  },
-
-  textoBotao: {
-    color: CORES.TEXTO_PADRAO,
-    padding: 16,
-  },
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import styles from "./TelaReajusteSalarialStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaReajusteSalarial = () => {
   const [campoSalario, setCampoSalario] = React.useState("");
@@ -69,8 +52,8 @@ const TelaReajusteSalarial = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome name="money" size={56} color="orange" />
+      <View style={styles.containerIcon}>
+        <FontAwesome name="money" size={56} color={CORES.LARANJA} />
       </View>
 
       <CampoTextoCustomizado
@@ -80,7 +63,7 @@ const TelaReajusteSalarial = () => {
         onChangeText={setCampoSalario}
       />
 
-      <View style={{ alignItems: "flex-start" }}>
+      <View style={styles.containerSwitch}>
         <Text>Cargo de confiança</Text>
         <Switch
           trackColor={{ false: "#767577", true: "#ffa50055" }}
@@ -94,11 +77,9 @@ const TelaReajusteSalarial = () => {
         <Text style={styles.textoBotao}>Calcular</Text>
       </Pressable>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
-          {novoSalario}
-        </Text>
+      <View style={styles.containerResultado}>
+        <Text style={styles.tituloCampoResultado}>Resultado:</Text>
+        <Text style={styles.textoCampoResultado}>{novoSalario}</Text>
       </View>
     </View>
   );

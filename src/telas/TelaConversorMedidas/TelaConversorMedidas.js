@@ -1,10 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import styles from "./TelaConversorMedidasStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaConversorMedidas = () => {
   const [campoCentimetro, setCampoCentimetro] = React.useState("");
@@ -63,8 +64,8 @@ const TelaConversorMedidas = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="ruler" size={56} color="green" />
+      <View style={styles.containerIcon}>
+        <FontAwesome5 name="ruler" size={56} color={CORES.VERDE} />
       </View>
 
       <CampoTextoCustomizado

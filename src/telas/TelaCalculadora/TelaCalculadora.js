@@ -1,34 +1,14 @@
 import React from "react";
-import { Pressable, StyleSheet, View, Text, Keyboard } from "react-native";
-
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-
-import CORES from "../../comum/constantes/cores";
+import { Pressable, View, Text, Keyboard } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
+
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
 
 import RNPickerSelect from "react-native-picker-select";
 import pickerSelectStyles from "../../comum/constantes/pickerSelectStyles";
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const styles = StyleSheet.create({
-  botao: {
-    backgroundColor: "purple",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 56,
-    borderRadius: 32,
-    borderColor: "#000",
-    borderWidth: 2,
-  },
-
-  textoBotao: {
-    color: CORES.TEXTO_CLARO,
-  },
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import styles from "./TelaCalculadoraStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaCalculadora = () => {
   const [campoNumUm, setCampoNumUm] = React.useState("");
@@ -67,8 +47,8 @@ const TelaCalculadora = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="calculator" size={56} color="purple" />
+      <View style={styles.containerIcon}>
+        <FontAwesome5 name="calculator" size={56} color={CORES.ROXO} />
       </View>
 
       <CampoTextoCustomizado
@@ -102,11 +82,9 @@ const TelaCalculadora = () => {
         <Text style={styles.textoBotao}>Calcular</Text>
       </Pressable>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
-          {resultOperacao}
-        </Text>
+      <View style={styles.containerResultado}>
+        <Text style={styles.tituloCampoResultado}>Resultado:</Text>
+        <Text style={styles.textoCampoResultado}>{resultOperacao}</Text>
       </View>
     </View>
   );

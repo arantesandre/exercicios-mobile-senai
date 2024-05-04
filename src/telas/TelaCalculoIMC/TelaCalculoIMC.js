@@ -1,35 +1,16 @@
-import { Keyboard, Pressable, StyleSheet, Text, View } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-
-import { FontAwesome5 } from "@expo/vector-icons";
-import CORES from "../../comum/constantes/cores";
 import React from "react";
+import { Keyboard, Pressable, Text, View } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const styles = StyleSheet.create({
-  botao: {
-    backgroundColor: "gray",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 48,
-    borderBottomLeftRadius: 48,
-    borderTopRightRadius: 48,
-  },
-
-  textoBotao: {
-    color: CORES.TEXTO_CLARO,
-  },
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import styles from "./TelaCalculoIMCStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaCalculoIMC = () => {
   const [campoAltura, setCampoAltura] = React.useState("");
   const [campoPeso, setCampoPeso] = React.useState("");
   const [imc, setImc] = React.useState("");
-  // const [statusImc, setStatusImc] = React.useState("");
 
   const cacularIMC = () => {
     //peso / altura * altura
@@ -38,9 +19,16 @@ const TelaCalculoIMC = () => {
 
     let status;
 
-    if (isNaN(campoAltura) || isNaN(campoPeso) || campoAltura <= 0 || campoPeso <= 0) {
-      alert("Ops! \n\n -> Verifique se os campos contém valores válidos \n\n -> Forneça valores acima de zero");
-    }else {
+    if (
+      isNaN(campoAltura) ||
+      isNaN(campoPeso) ||
+      campoAltura <= 0 ||
+      campoPeso <= 0
+    ) {
+      alert(
+        "Ops! \n\n -> Verifique se os campos contém valores válidos \n\n -> Forneça valores acima de zero"
+      );
+    } else {
       if (calculoImc < 18.5) {
         status = "Abaixo do peso";
       } else if (calculoImc >= 18.5 && calculoImc <= 24.9) {
@@ -63,8 +51,8 @@ const TelaCalculoIMC = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="balance-scale" size={56} color="gray" />
+      <View style={styles.containerIcon}>
+        <FontAwesome5 name="balance-scale" size={56} color={CORES.CINZA} />
       </View>
 
       <CampoTextoCustomizado
@@ -84,11 +72,9 @@ const TelaCalculoIMC = () => {
         <Text style={styles.textoBotao}>Calcular</Text>
       </Pressable>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
-          {imc}
-        </Text>
+      <View style={styles.containerResultado}>
+        <Text style={styles.tituloCampoResultado}>Resultado:</Text>
+        <Text style={styles.textoCampoResultado}>{imc}</Text>
       </View>
     </View>
   );

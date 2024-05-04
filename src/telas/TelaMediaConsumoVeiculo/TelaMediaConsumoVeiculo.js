@@ -1,27 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Pressable, Text, Keyboard } from "react-native";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CORES from "../../comum/constantes/cores";
+import { View, Text, Pressable, Keyboard } from "react-native";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-/////////////////////////////////////////////////////////////////////////////////////////
-
-const styles = StyleSheet.create({
-  botao: {
-    backgroundColor: "red",
-    height: 48,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  textoBotao: {
-    color: CORES.BRANCA,
-  },
-});
-
-/////////////////////////////////////////////////////////////////////////////////////////
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import styles from "./TelaMediaConsumoVeiculoStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaMediaConsumoVeiculo = () => {
   const [campoDistancia, setCampoDistancia] = React.useState("");
@@ -30,7 +14,8 @@ const TelaMediaConsumoVeiculo = () => {
 
   //CALCULO
   const calcularConsumo = () => {
-    const resultadoConsumo = parseFloat(campoDistancia) / parseFloat(campoQuantCombustivel);
+    const resultadoConsumo =
+      parseFloat(campoDistancia) / parseFloat(campoQuantCombustivel);
 
     if (campoDistancia == "" || campoQuantCombustivel == "") {
       alert("Preencha todos os campos antes de prosseguir.");
@@ -48,8 +33,8 @@ const TelaMediaConsumoVeiculo = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome5 name="car" size={56} color="red" />
+      <View style={styles.containerIcon}>
+        <FontAwesome5 name="car" size={56} color={CORES.VERMELHO} />
       </View>
 
       <CampoTextoCustomizado
@@ -70,11 +55,9 @@ const TelaMediaConsumoVeiculo = () => {
         <Text style={styles.textoBotao}>Calcular</Text>
       </Pressable>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
-          {campoResultado}
-        </Text>
+      <View style={styles.containerResultado}>
+        <Text style={styles.tituloCampoResultado}>Resultado:</Text>
+        <Text style={styles.textoCampoResultado}>{campoResultado}</Text>
       </View>
     </View>
   );

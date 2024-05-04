@@ -4,7 +4,7 @@ import CORES from "../../constantes/cores";
 const CampoTextoCustomizadoStyle = StyleSheet.create({
   campoTexto: {
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: CORES.PRETO,
     height: 40,
     padding: 8,
     backgroundColor: CORES.BRANCA,

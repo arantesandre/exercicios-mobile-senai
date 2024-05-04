@@ -1,10 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
 import { FontAwesome } from "@expo/vector-icons";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import styles from "./TelaConversorMoedaStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaConversorMoeda = () => {
   const [campoReal, setCampoReal] = React.useState("");
@@ -15,14 +16,14 @@ const TelaConversorMoeda = () => {
   const valorDolar = 5.1;
   const valorEuro = 5.5;
 
-  //REAL -> DOLAR -> EURO ////////////////////////////////////////
+  //REAL -> DOLAR -> EURO
   const cambioRealDolarEuro = (campoReal) => {
     setCampoReal(campoReal);
 
     if (isNaN(campoReal)) {
       alert("Insira um valor válido");
       setCampoReal("");
-    } else if (campoReal !== "") {
+    } else if (campoReal) {
       setCampoDolar((parseFloat(campoReal) / valorDolar).toFixed(2).toString());
       setCampoEuro((parseFloat(campoReal) / valorEuro).toFixed(2).toString());
     } else {
@@ -31,14 +32,14 @@ const TelaConversorMoeda = () => {
     }
   };
 
-  //DOLAR -> EURO -> REAL ////////////////////////////////////////
+  //DOLAR -> EURO -> REAL
   const cambioDolarEuroReal = (campoDolar) => {
     setCampoDolar(campoDolar);
 
     if (isNaN(campoDolar)) {
       alert("Insira um valor válido");
       setCampoDolar("");
-    } else if (campoDolar !== "") {
+    } else if (campoDolar) {
       setCampoReal((parseFloat(campoDolar) * valorDolar).toFixed(2).toString());
       setCampoEuro((parseFloat(campoDolar) * 0.93).toFixed(2).toString());
     } else {
@@ -47,14 +48,14 @@ const TelaConversorMoeda = () => {
     }
   };
 
-  //EURO -> REAL -> DOLAR ////////////////////////////////////////
+  //EURO -> REAL -> DOLAR
   const cambioEuroRealDolar = (campoEuro) => {
     setCampoEuro(campoEuro);
 
     if (isNaN(campoEuro)) {
       alert("Insira um valor válido");
       setCampoEuro("");
-    } else if (campoEuro !== "") {
+    } else if (campoEuro) {
       setCampoReal((parseFloat(campoEuro) * valorEuro).toFixed(2).toString());
       setCampoDolar((parseFloat(campoEuro) * 1.07).toFixed(2).toString());
     } else {
@@ -65,8 +66,8 @@ const TelaConversorMoeda = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <FontAwesome name="money" size={56} color="blue" />
+      <View style={styles.containerIcon}>
+        <FontAwesome name="money" size={56} color={CORES.AZUL} />
       </View>
 
       <CampoTextoCustomizado

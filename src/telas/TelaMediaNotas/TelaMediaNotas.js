@@ -1,32 +1,11 @@
-import { Keyboard, Pressable, StyleSheet, Text, View } from "react-native";
-import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
-
-import Ionicons from "@expo/vector-icons/Ionicons";
-import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
-import CORES from "../../comum/constantes/cores";
 import React from "react";
+import { Keyboard, Pressable, Text, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const styles = StyleSheet.create({
-  botao: {
-    backgroundColor: "yellow",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    height: 56,
-    borderRadius: 16,
-    borderColor: "#000",
-    borderWidth: 2,
-    borderStyle: "dotted",
-  },
-
-  textoBotao: {
-    color: CORES.TEXTO_PADRAO,
-    padding: 16,
-  },
-});
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
+import CampoTextoCustomizado from "../../comum/componentes/CampoTextoCustomizado/CampoTextoCustomizado";
+import telasContainerStyle from "../../comum/constantes/telasContainerStyle";
+import styles from "./TelaMediaNotasStyles";
+import CORES from "../../comum/constantes/cores";
 
 const TelaMediaNotas = () => {
   const [campoAv1, setCampoAv1] = React.useState("");
@@ -60,8 +39,12 @@ const TelaMediaNotas = () => {
 
   return (
     <View style={telasContainerStyle.container}>
-      <View style={{ alignItems: "center" }}>
-        <Ionicons name="document-text-outline" size={56} color="yellow" />
+      <View style={styles.containerIcon}>
+        <Ionicons
+          name="document-text-outline"
+          size={56}
+          color={CORES.AMARELO}
+        />
       </View>
 
       <CampoTextoCustomizado
@@ -87,9 +70,9 @@ const TelaMediaNotas = () => {
         <Text style={styles.textoBotao}>Calcular</Text>
       </Pressable>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={{ fontSize: 24, fontWeight: "bold" }}>Resultado:</Text>
-        <Text style={{ fontSize: 24, textAlign: "center", marginTop: 16 }}>
+      <View style={styles.containerResultado}>
+        <Text style={styles.tituloCampoResultado}>Resultado:</Text>
+        <Text style={styles.textoCampoResultado}>
           {resultadMedia} {status}
         </Text>
       </View>
